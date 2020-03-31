@@ -74,10 +74,63 @@ The library of books in the academic adviser's office is currently kept track of
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-[This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+#### Book
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | bookId        | String   | unique id for the book (default field - Format - "CIS-000") |
+   | createdAt    | DateTime | date when book is created (default field) |
+   | updatedAt   | DateTime | date when book is last updated (i.e. returned/checked out) (default field) |
+   | bookTitle   | String   | Book Title |
+   | author       | String   | author of library book |
+   | description   | String   | description of textbook |
+   | edition       | String   | edition or year of book publication |
+   | pageNum       | Number   | number of pages in the textbook |
+   | condition     | String   | condition of book upon return |
+   | totalQuantity | Number | Number of books in library |
+   | freeQuantity  | Number | Number of books for rent (pulled from netw. req.) |
+   | coursesUsed   | List of Strings | Course that book is used for |
+#### Student
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | studentId     | String   | unique id for the user post (default field) |
+   | createdAt     | DateTime | date when Student is created (default field) |
+   | updatedAt     | DateTime | date when Student is last updated (default field) |
+   | studentNum    | Number   | FAMU Student Number (default field, must begin w/ '300') |
+   | email         | String   | FAMU Student Email |
+   | password      | String   | FAMU Password |
+   | classification | String   | Student Classification |
+   | bookRented   | Pointer to Book  | book being rented by student |
+   | rentStatus   | Boolean   | Determines if they can check out a book (only 1 book at a time, no overdue books) |
+#### Librarian/Admin
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | adminId       | String   | unique id for the user post (default field) |
+   | email         | Pointer to User | image author |
+   | password      | String     | image that user posts |
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+#### List of network requests by screen
+   - Home Feed Screen
+      - (Read/GET) Query all posts where user is author
+         ```swift
+         let query = PFQuery(className:"Post")
+         query.whereKey("author", equalTo: currentUser)
+         query.order(byDescending: "createdAt")
+         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let posts = posts {
+               print("Successfully retrieved \(posts.count) posts.")
+           // TODO: Do something with posts...
+            }
+         }
+         ```
+      - (Create/POST) Create a new like on a post
+      - (Delete) Delete existing like
+      - (Create/POST) Create a new comment on a post
+      - (Delete) Delete existing comment
+   - Create Post Screen
+      - (Create/POST) Create a new post object
+   - Profile Screen
+      - (Read/GET) Query logged in user object
+      - (Update/PUT) Update user profile image
