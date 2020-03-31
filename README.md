@@ -110,32 +110,30 @@ The library of books in the academic adviser's office is currently kept track of
    | password      | String     | image that user posts |
 ### Networking
 #### List of network requests by screen
-- Login Screen   
-  - (Read/GET) Login to app with studentNum or studentEmail 
-  ```java
-        // Create the ParseUser
-        ParseUser student = new ParseUser();
-        // Set core properties
-        user.setStudentNum(300000000);
-        user.setPassword("secret123");
-        user.setEmail("student@famu.edu");
-        // Set custom properties - 
-        user.put("classification", currentYear);
-        user.put("rentStatus", true);
-        // Invoke signUpInBackground
-        user.signUpInBackground(new SignUpCallback() {
-          public void done(ParseException e) {
-            if (e == null) {
-              // Hooray! Let them use the app now.
-            } else {
-              // Sign up didn't succeed. Look at the ParseException
-              // to figure out what went wrong
-            }
-          }
-        });
-    ```
 - Register Screen   
   - (Create/POST) Create a new Student
+  ```java
+        ParseUser student = new ParseUser();
+        student.setUsername(username);
+        student.setPassword("my pass");
+        student.setEmail("email@example.com");
+
+    // other fields can be set just like with ParseObject
+    student.put("phone", "650-253-0000");
+
+    student.signUpInBackground(new SignUpCallback() {
+    public void done(ParseException e) {
+        if (e == null) {
+          // Hooray! Let them use the app now.
+        } else {
+          // Sign up didn't succeed. Look at the ParseException
+          // to figure out what went wrong
+        }
+      }
+    });
+    ```
+- Login Screen   
+  - (Read/GET) Login to app with studentNum or studentEmail 
   ```java
   // Create the ParseUser
     ParseUser user = new ParseUser();
@@ -159,12 +157,29 @@ The library of books in the academic adviser's office is currently kept track of
   ```
 - Home Feed/Library Feed Screen
   - (Read/GET) Query all books where freeQuantity > 0
+    ```java
+    ParseQuery<ParseObject> query = ParseQuery.getQuery("Book");
+    query.whereGreaterThan("freeQuantity", 0);
+    query.findInBackground(new FindCallback<ParseObject>() {
+        public void done(List<ParseObject> bookList, ParseException e) {
+            if (e == null) {
+                if(bookList.size() == 1)
+                    Log.d("Book", "Retrieved " + bookList.size() + " book.");
+                else
+                    Log.d("Book", "Retrieved " + bookList.size() + " books.");
+            } else {
+                Log.d("Book", "Error: " + e.getMessage());
+            }
+        }
+    });
+    ```
 - Search Results Screen
   - (Read/GET) Query all books where freeQuantity > 0 and requested fields from search match data in book object
+  
 - Book Detail Screen
   - (Read/GET) Query logged in user object
   - (Update/PUT) Update user profile image   
 - Checkout Screen
-  - (Read/GET) Query logged in user object
-  - (Update/PUT) Update user profile image
+  - (Read/GET) Query student's requested book to be checked out
+  - (Update/PUT) Upon checkout, update student's rentStatus to false, update student's bookRented to bookId, decrease the freeQuantity in all books with the same book title 
 
