@@ -110,27 +110,61 @@ The library of books in the academic adviser's office is currently kept track of
    | password      | String     | image that user posts |
 ### Networking
 #### List of network requests by screen
-   - Home Feed Screen
-      - (Read/GET) Query all posts where user is author
-         ```swift
-         let query = PFQuery(className:"Post")
-         query.whereKey("author", equalTo: currentUser)
-         query.order(byDescending: "createdAt")
-         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
-            if let error = error { 
-               print(error.localizedDescription)
-            } else if let posts = posts {
-               print("Successfully retrieved \(posts.count) posts.")
-           // TODO: Do something with posts...
+- Login Screen   
+  - (Read/GET) Login to app with studentNum or studentEmail 
+  ```java
+        // Create the ParseUser
+        ParseUser student = new ParseUser();
+        // Set core properties
+        user.setStudentNum(300000000);
+        user.setPassword("secret123");
+        user.setEmail("student@famu.edu");
+        // Set custom properties - 
+        user.put("classification", currentYear);
+        user.put("rentStatus", true);
+        // Invoke signUpInBackground
+        user.signUpInBackground(new SignUpCallback() {
+          public void done(ParseException e) {
+            if (e == null) {
+              // Hooray! Let them use the app now.
+            } else {
+              // Sign up didn't succeed. Look at the ParseException
+              // to figure out what went wrong
             }
-         }
-         ```
-      - (Create/POST) Create a new like on a post
-      - (Delete) Delete existing like
-      - (Create/POST) Create a new comment on a post
-      - (Delete) Delete existing comment
-   - Create Post Screen
-      - (Create/POST) Create a new post object
-   - Profile Screen
-      - (Read/GET) Query logged in user object
-      - (Update/PUT) Update user profile image
+          }
+        });
+    ```
+- Register Screen   
+  - (Create/POST) Create a new Student
+  ```java
+  // Create the ParseUser
+    ParseUser user = new ParseUser();
+    // Set core properties
+    user.setUsername("joestevens");
+    user.setPassword("secret123");
+    user.setEmail("email@example.com");
+    // Set custom properties
+    user.put("phone", "650-253-0000");
+    // Invoke signUpInBackground
+    user.signUpInBackground(new SignUpCallback() {
+      public void done(ParseException e) {
+        if (e == null) {
+          // Hooray! Let them use the app now.
+        } else {
+          // Sign up didn't succeed. Look at the ParseException
+          // to figure out what went wrong
+        }
+      }
+    });
+  ```
+- Home Feed/Library Feed Screen
+  - (Read/GET) Query all books where freeQuantity > 0
+- Search Results Screen
+  - (Read/GET) Query all books where freeQuantity > 0 and requested fields from search match data in book object
+- Book Detail Screen
+  - (Read/GET) Query logged in user object
+  - (Update/PUT) Update user profile image   
+- Checkout Screen
+  - (Read/GET) Query logged in user object
+  - (Update/PUT) Update user profile image
+
