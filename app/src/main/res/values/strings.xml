@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">CISMO Library</string>
+    <string name="student_id_label">Student ID</string>
+    <string name="password_label">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email_label">E-Mail</string>
+    <string name="name_label">Name</string>
+    <string name="confirm_password_label">Confirm Password</string>
+    <string name="search_label">Search</string>
+    <string name="reg_question">Need a login?</string>
+    <string name="reg_txt_label">Register here!</string>
+    <string name="reg_btn_label">Register</string>
+    <string name="login_label">Login</string>
+    <string name="results_label">Results</string>
+    <string name="book_title_label">Book Title</string>
+    <string name="edition_label">Edition</string>
+    <string name="status_label">Status</string>
+    <string name="return_label">Return Date</string>
+</resources>
