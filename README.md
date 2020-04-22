@@ -175,6 +175,7 @@ The library of books in the academic adviser's office is currently kept track of
     ```
 - Search Results Screen
   - (Read/GET) Query all books where freeQuantity > 0 and requested fields from search match data in book object
+  <img src="searchscreen.gif" width=600>
   
 - Book Detail Screen
   - (Read/GET) Query logged in user object
