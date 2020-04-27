@@ -1,4 +1,4 @@
-package com.example.cismolibrary;
+package com.example.librarytimeline;
 
 import androidx.appcompat.app.AppCompatActivity;
 
