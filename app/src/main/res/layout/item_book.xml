@@ -1,56 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/bookName"
+        android:id="@+id/tvBookName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="12dp"
-        android:textSize="24sp"
+        android:textSize="22sp"
         tools:text="Book Name" />
 
     <TextView
-        android:id="@+id/bookEdition"
+        android:id="@+id/tvAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bookName"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
+        android:textSize="18sp"
+        tools:text="Author" />
+
+    <ImageView
+        android:id="@+id/ivBookCover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitEnd"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvBookEdition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textSize="18sp"
         tools:text="Book Edition" />
 
     <TextView
-        android:id="@+id/bookStatus"
+        android:id="@+id/tvBookStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bookEdition"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="8dp"
         android:textSize="18sp"
         tools:text="Book Status" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="158dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_toEndOf="@+id/bookStatus"
-        tools:srcCompat="@tools:sample/avatars" />
-
-</RelativeLayout>
+</LinearLayout>
