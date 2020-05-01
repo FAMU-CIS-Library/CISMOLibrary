@@ -4,9 +4,12 @@ Rattler Coders
 # FAMU CISMO Library
 
 # Updates on Progress of App:
-(4/30/2020) You can view the [narration demo]() of this app by clicking the link.
+(4/30/2020) You can view the [narration demo](https://github.com/FAMU-CIS-Library/CISMOLibrary/blob/master/Narration-Library.mp4) of this app by clicking the link.
+
 (4/29/2020) Scope of Project and MVP required stories have been adjust due to previous issues during development of project.
-(4/22/2020) Because of issues with our team using GitHub Organizations, we lost a lot of files that should have merged on our branches. This along with other unforeseen issues with our team led to large delays in the progress of this progress.
+
+(4/22/2020) Because of issues with our team using GitHub Organizations, we lost a lot of files that should have merged on our branches.
+This along with other unforeseen issues with our team led to large delays in the progress of this progress.
 
 ## Table of Contents
 1. [Overview](#Overview)
