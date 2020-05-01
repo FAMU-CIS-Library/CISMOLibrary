@@ -1,7 +1,12 @@
-﻿Rattler Coders
+Rattler Coders
 ===
 
 # FAMU CISMO Library
+
+# Updates on Progress of App:
+(4/30/2020) You can view the [narration demo]() of this app by clicking the link.
+(4/29/2020) Scope of Project and MVP required stories have been adjust due to previous issues during development of project.
+(4/22/2020) Because of issues with our team using GitHub Organizations, we lost a lot of files that should have merged on our branches. This along with other unforeseen issues with our team led to large delays in the progress of this progress.
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -18,7 +23,7 @@ The library of books in the academic adviser's office is currently kept track of
 - **Mobile:** Uses push notifications to remind students when their book rentals are due and requires real time data on which books are available or checked out.
 - **Story:** As students come to the academic advisor to rent books, instead of having to check in a old folder full of papers with students that graduated years ago, they can search digitally for valid students and the book(s) that want to be requested as well. 
 - **Market:** This app's user base would be students in the CIS department. 
-- **Habit:** Thihs app would have students return as often as they need to rent/return books for the semester. Ideally it'd be once or twice a week.
+- **Habit:** This app would have students return as often as they need to rent/return books for the semester. Ideally it'd be once or twice a week.
 - **Scope:** The scope of this project is to have a small set of users and a subset of the library books to "checkout" and "return" for this sprint. Having the capability to search, find, and checkout/return books to the library would be great to have, even with a small subset of the library. As the books increase, it's still just as simple to search and request books for rental.
 
 ## Product Spec
@@ -26,25 +31,36 @@ The library of books in the academic adviser's office is currently kept track of
 ### 1. User Stories (Required and Optional)
 
 **Required Must-have Stories**
-* Register with FAMU Credentials
-* Login using FAMU Credentials 
-* Search for CIS Textbooks
-* Check out book
+[x] Register with FAMU Credentials
+[x] Login using FAMU Credentials
+[x] View CISMO Library Textbooks
 
 **Optional Nice-to-have Stories**
-* Update Profile
-* Add books to a wishlist/waitlist
-* See notifications on book's due dates
+[] Viewing more detailed book information
+    [] Number of Book Copies Available
+    [] Add books to a Wishlist/Waitlist
+[] View Book Checked out in Profile
+[] See notifications on book's due dates
+[] Check out books
 
 ### 2. Screen Archetypes
 * Register
-   * Register with FAMU Credentials
+    * Register with FAMU Credentials
+        * Use valid FAMU Student ID
+        * Use valid FAMU Email
 * Login
-   * Login using FAMU Credentials 
+    * Login using FAMU Credentials
+        * Student ID
+        * Password (Soon to be synced with FAMU Database)
+* Catalog
+    * Display CIS Library Books
+        * Title
+        * Author
+        * Edition
+* Profile
+    * Dis
 * Search
     * 
-* Profile
-	* 
 
 ### 3. Navigation
 
@@ -78,7 +94,7 @@ The library of books in the academic adviser's office is currently kept track of
 #### Book
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
-   | bookId        | String   | unique id for the book (default field - Format - "CIS-000") |
+   | objectId      | String   | unique id for the book (default field - Format - "CIS-000") |
    | createdAt    | DateTime | date when book is created (default field) |
    | updatedAt   | DateTime | date when book is last updated (i.e. returned/checked out) (default field) |
    | bookTitle   | String   | Book Title |
@@ -90,7 +106,8 @@ The library of books in the academic adviser's office is currently kept track of
    | totalQuantity | Number | Number of books in library |
    | freeQuantity  | Number | Number of books for rent (pulled from netw. req.) |
    | coursesUsed   | List of Strings | Course that book is used for |
-#### Student
+
+#### Student (Currently "User")
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | studentId     | String   | unique id for the user post (default field) |
@@ -102,7 +119,7 @@ The library of books in the academic adviser's office is currently kept track of
    | classification | String   | Student Classification |
    | bookRented   | Pointer to Book  | book being rented by student |
    | rentStatus   | Boolean   | Determines if they can check out a book (only 1 book at a time, no overdue books) |
-#### Librarian/Admin
+#### Librarian/Admin (Stretch)
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | adminId       | String   | unique id for the user post (default field) |
@@ -183,4 +200,3 @@ The library of books in the academic adviser's office is currently kept track of
 - Checkout Screen
   - (Read/GET) Query student's requested book to be checked out
   - (Update/PUT) Upon checkout, update student's rentStatus to false, update student's bookRented to bookId, decrease the freeQuantity in all books with the same book title 
-
